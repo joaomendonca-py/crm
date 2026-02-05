@@ -32,7 +32,7 @@ class Player {
         this.hitWall = false;
         this.jumpHeld = false;
         this.jumpTimer = 0;
-        this.maxJumpTime = 15;
+        this.maxJumpTime = 22;
         this.canJump = true;
         this.shrinking = false;
         this.shrinkTimer = 0;
@@ -47,8 +47,8 @@ class Player {
         this.decel = 0.2;
         this.maxSpeed = 3.5;
         this.runMaxSpeed = 5.5;
-        this.jumpForce = -9;
-        this.bigJumpForce = -10;
+        this.jumpForce = -11;
+        this.bigJumpForce = -12.5;
     }
 
     grow() {
@@ -189,7 +189,7 @@ class Player {
         // Variable jump height (hold jump for higher)
         if (this.jumpHeld && Input.isDown('up') && this.jumpTimer < this.maxJumpTime) {
             this.jumpTimer++;
-            this.vy -= 0.3;
+            this.vy -= 0.45;
         }
 
         // Apply gravity
