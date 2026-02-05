@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Mario Bros - HTML5</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <div id="ui-overlay">
+            <div id="score-display">
+                <span id="score-label">MARIO</span>
+                <span id="score-value">000000</span>
+            </div>
+            <div id="coins-display">
+                <span id="coin-icon">&#9679;</span>
+                <span id="coins-value">x00</span>
+            </div>
+            <div id="world-display">
+                <span>WORLD</span>
+                <span id="world-value">1-1</span>
+            </div>
+            <div id="time-display">
+                <span>TIME</span>
+                <span id="time-value">400</span>
+            </div>
+            <div id="lives-display">
+                <span>LIVES</span>
+                <span id="lives-value">3</span>
+            </div>
+        </div>
+        <div id="start-screen">
+            <h1>SUPER MARIO BROS</h1>
+            <p>&#169; HTML5 EDITION</p>
+            <br>
+            <p class="blink">PRESS ENTER TO START</p>
+            <br>
+            <div class="controls-info">
+                <p><strong>Controls:</strong></p>
+                <p>Arrow Keys / WASD - Move</p>
+                <p>Space / Up / W - Jump</p>
+                <p>Shift - Run</p>
+                <p>P - Pause</p>
+            </div>
+        </div>
+        <div id="game-over-screen" class="hidden">
+            <h1>GAME OVER</h1>
+            <p class="blink">PRESS ENTER TO RESTART</p>
+        </div>
+        <div id="level-complete-screen" class="hidden">
+            <h1>LEVEL COMPLETE!</h1>
+            <p id="level-score-bonus"></p>
+        </div>
+        <div id="pause-screen" class="hidden">
+            <h1>PAUSED</h1>
+            <p>PRESS P TO CONTINUE</p>
+        </div>
+    </div>
+
+    <script src="js/sprites.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/engine.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/enemies.js"></script>
+    <script src="js/items.js"></script>
+    <script src="js/levels.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
