@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id="game-container">
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <canvas id="gameCanvas" width="1280" height="720"></canvas>
         <div id="ui-overlay">
             <div id="score-display">
                 <span id="score-label">MARIO</span>
@@ -31,31 +31,66 @@
                 <span id="lives-value">3</span>
             </div>
         </div>
+
+        <!-- Controls HUD shown during gameplay -->
+        <div id="controls-hud">
+            <span><span class="ctrl-key">&larr;</span><span class="ctrl-key">&rarr;</span> Andar</span>
+            <span><span class="ctrl-key">SPACE</span> Pular</span>
+            <span><span class="ctrl-key">SHIFT</span> Correr</span>
+            <span><span class="ctrl-key">P</span> Pausa</span>
+        </div>
+
+        <!-- Music toggle -->
+        <button id="music-toggle" title="Ligar/Desligar musica">&#9835;</button>
+
         <div id="start-screen">
             <h1>SUPER MARIO BROS</h1>
             <p>&#169; HTML5 EDITION</p>
             <br>
-            <p class="blink">PRESS ENTER TO START</p>
+            <p class="blink">APERTE ENTER PARA JOGAR</p>
             <br>
             <div class="controls-info">
-                <p><strong>Controls:</strong></p>
-                <p>Arrow Keys / WASD - Move</p>
-                <p>Space / Up / W - Jump</p>
-                <p>Shift - Run</p>
-                <p>P - Pause</p>
+                <p><strong>CONTROLES:</strong></p>
+                <br>
+                <div class="arrow-keys">
+                    <div class="key-box empty"></div>
+                    <div class="key-box">&uarr;</div>
+                    <div class="key-box empty"></div>
+                    <div class="key-box">&larr;</div>
+                    <div class="key-box">&darr;</div>
+                    <div class="key-box">&rarr;</div>
+                </div>
+                <p style="color:#888; font-size:11px; margin-bottom:12px;">ou WASD</p>
+
+                <div class="key-row">
+                    <span class="key-box">SPACE</span>
+                    <span class="key-desc">Pular</span>
+                </div>
+                <div class="key-row">
+                    <span class="key-box">SHIFT</span>
+                    <span class="key-desc">Correr</span>
+                </div>
+                <div class="key-row">
+                    <span class="key-box">P</span>
+                    <span class="key-desc">Pausar</span>
+                </div>
+                <div class="key-row">
+                    <span class="key-box">ENTER</span>
+                    <span class="key-desc">Iniciar / Reiniciar</span>
+                </div>
             </div>
         </div>
         <div id="game-over-screen" class="hidden">
             <h1>GAME OVER</h1>
-            <p class="blink">PRESS ENTER TO RESTART</p>
+            <p class="blink">APERTE ENTER PARA REINICIAR</p>
         </div>
         <div id="level-complete-screen" class="hidden">
-            <h1>LEVEL COMPLETE!</h1>
+            <h1>FASE COMPLETA!</h1>
             <p id="level-score-bonus"></p>
         </div>
         <div id="pause-screen" class="hidden">
-            <h1>PAUSED</h1>
-            <p>PRESS P TO CONTINUE</p>
+            <h1>PAUSADO</h1>
+            <p>APERTE P PARA CONTINUAR</p>
         </div>
     </div>
 

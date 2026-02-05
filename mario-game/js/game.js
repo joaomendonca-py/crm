@@ -393,6 +393,13 @@ class Game {
         this.loadLevel(0);
         this.state = 'playing';
         AudioSystem.resume();
+        AudioSystem.startOverworldMusic();
+
+        // Fade out controls HUD after 8 seconds
+        const hud = document.getElementById('controls-hud');
+        if (hud) {
+            setTimeout(() => { hud.classList.add('fade-out'); }, 8000);
+        }
     }
 
     loadLevel(index) {
@@ -415,6 +422,11 @@ class Game {
 
         // Set canvas background
         this.canvas.style.backgroundColor = this.currentLevel.skyColor;
+
+        // Restart music for new level
+        if (this.state === 'playing') {
+            AudioSystem.startOverworldMusic();
+        }
     }
 
     completeLevel() {
@@ -464,12 +476,14 @@ class Game {
         this.state = 'paused';
         this.pauseScreen.classList.remove('hidden');
         AudioSystem.pause();
+        AudioSystem.stopMusic();
     }
 
     resumeGame() {
         this.state = 'playing';
         this.pauseScreen.classList.add('hidden');
         AudioSystem.pause();
+        AudioSystem.startOverworldMusic();
     }
 
     resetGame() {

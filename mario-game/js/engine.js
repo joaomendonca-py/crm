@@ -5,8 +5,8 @@
 const TILE_SIZE = 32;
 const GRAVITY = 0.6;
 const MAX_FALL_SPEED = 12;
-const CANVAS_WIDTH = 800;
-const CANVAS_HEIGHT = 600;
+const CANVAS_WIDTH = 1280;
+const CANVAS_HEIGHT = 720;
 
 // ---- INPUT HANDLER ----
 const Input = {
