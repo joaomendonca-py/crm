@@ -97,7 +97,11 @@ class Game {
                 break;
 
             case 'levelcomplete':
-                // Wait for animation then auto-advance
+                // Keep updating player for flag slide animation
+                if (this.player) {
+                    this.player.update(this);
+                }
+                this.particles.update();
                 break;
         }
     }

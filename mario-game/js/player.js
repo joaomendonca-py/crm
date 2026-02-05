@@ -237,25 +237,43 @@ class Player {
     }
 
     updateFlagAnimation(game) {
-        if (this.flagY < this.flagTargetY) {
-            this.flagY += 3;
-            this.y = this.flagY;
-        } else {
-            // Walk to castle
-            this.flagAnimation = false;
-            this.direction = 'right';
-            this.vx = 2;
+        if (this.flagSliding) {
+            // Phase 1: Slide down the pole
+            if (this.flagY < this.flagTargetY) {
+                this.flagY += 3;
+                this.y = this.flagY;
+            } else {
+                // Done sliding, start walking to castle
+                this.flagSliding = false;
+                this.flagWalking = true;
+                this.flagWalkTimer = 90; // ~1.5 seconds
+                this.direction = 'right';
+                this.state = 'run';
+                this.animFrame = 0;
+            }
+        } else if (this.flagWalking) {
+            // Phase 2: Walk toward castle
+            this.x += 2;
+            this.animTimer++;
+            if (this.animTimer > 5) {
+                this.animTimer = 0;
+                this.animFrame = (this.animFrame + 1) % 3;
+            }
             this.state = 'run';
-
-            // Complete level after short delay
-            setTimeout(() => {
+            this.flagWalkTimer--;
+            if (this.flagWalkTimer <= 0) {
+                this.flagWalking = false;
+                this.flagAnimation = false;
                 game.completeLevel();
-            }, 1500);
+            }
         }
     }
 
     startFlagAnimation(flagX, flagBottomY) {
         this.flagAnimation = true;
+        this.flagSliding = true;
+        this.flagWalking = false;
+        this.flagWalkTimer = 0;
         this.x = flagX - 8;
         this.flagY = this.y;
         this.flagTargetY = flagBottomY - this.height;
